@@ -50,7 +50,7 @@ public class ProjectGUI extends JFrame {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String idStr = JOptionPane.showInputDialog("Enter id:");
-            if (idStr == null) return; // User canceled
+            if (idStr == null) return; 
             int id;
             try {
                 id = Integer.parseInt(idStr);
@@ -60,10 +60,10 @@ public class ProjectGUI extends JFrame {
             }
         
             String username = JOptionPane.showInputDialog("Enter username:");
-            if (username == null) return; // User canceled
+            if (username == null) return; 
         
             String password = JOptionPane.showInputDialog("Enter password:");
-            if (password == null) return; // User canceled
+            if (password == null) return; 
         
             try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/ems_db?CharacterEncoding=utf8", "root", "");
                  Statement st = con.createStatement()) {
@@ -85,11 +85,10 @@ public class ProjectGUI extends JFrame {
 
     public void login() {
         String username = JOptionPane.showInputDialog("Enter Username:");
-        if (username == null) return; // User canceled
+        if (username == null) return; 
 
         String password = JOptionPane.showInputDialog("Enter Password:");
-        if (password == null) return; // User canceled
-
+        if (password == null) return; 
         try {
             Class.forName("com.mysql.jdbc.Driver");
             try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/ems_db?CharacterEncoding=utf8", "root", "");
@@ -98,9 +97,9 @@ public class ProjectGUI extends JFrame {
                 try (ResultSet rs = st.executeQuery(query)) {
                     if (rs.next()) {
                         JOptionPane.showMessageDialog(null, "Login successful");
-                        // Launch Project.java
+                        
                         Project.main(new String[0]);
-                        dispose(); // Close the current window
+                        dispose(); 
                     } else {
                         JOptionPane.showMessageDialog(null, "Invalid user");
                     }
